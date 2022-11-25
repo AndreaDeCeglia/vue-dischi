@@ -1,7 +1,10 @@
 <template>
-  <div id="app">
+  <div id="app" class="bg-dark text-white py-5">
+
+    <h1>Best Boolean CDs</h1>
+
     <div class="container">
-      <div class="d-flex row flex-wrap">
+      <div class="d-flex row justify-content-between align-items-center flex-wrap p-3">
         <CardComp
           v-for="(element, index) in CDdata"
           :key="index"
@@ -9,6 +12,7 @@
         />
       </div>
     </div>
+  
   </div>
 </template>
 
@@ -33,7 +37,7 @@ export default {
     getCD(){
       axios.get('https://flynn.boolean.careers/exercises/api/array/music')
         .then((response) =>{
-          this.CDdata = response.data;
+          this.CDdata = response.data.response
         })
     }
   }
@@ -47,5 +51,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100vh;
 }
+
 </style>
